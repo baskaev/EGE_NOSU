@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+using namespace std;
+
+//перевод в бинарный вид 
+string bin(int num) {
+	string s = "";
+	while (num > 0) {
+		s = to_string(num % 2) + s;
+		num /= 2;
+	}
+	return s;
+}
+// возведение в степень
+int ToThePower(int n, int power) {
+	int num = 1;
+	while (power > 0) {
+		num *= n;
+		power--;
+	}
+	return num;
+}
+// перевод в инт
+int binToInt(string s) {
+	int num = 0;
+	for (int i = s.length() - 1; i >= 0; i--) {
+		if (s[i] == '1') {
+			int power = s.length() - i - 1;
+			num += ToThePower(2, power);
+		}
+	}
+	return num;
+}
+//перевод в бинарный вид числа из 8 битов
+string AteByteBin(int num) {
+	string Bits[8] = { "0", "0", "0", "0", "0", "0", "0", "0" };
+	string s = "";
+	for (int i = 7; i >= 0; i--) {
+		if ((num - ToThePower(2, i)) >= 0) {
+			Bits[i] = "1";
+			num = num - ToThePower(2, i);
+		}
+
+		s += Bits[i];
+	}
+	return s;
+}
+// добавление одного бита (%2)
+string AddBit(string s) {
+	int cnt = 0;
+	for (int i = 0; i < s.length(); i++) {
+		if (s[i] == '1') {
+			cnt++;
+		}
+	}
+	s = s + to_string(cnt % 2);
+	return s;
+}
+int main() {
+	int min = INT_MAX;
+	for (int i = 0; i < 16; i++) {
+		string s = bin(i);
+		s = AddBit(s); s = AddBit(s);
+		cout << binToInt(s) << endl;
+	}
+}

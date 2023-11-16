@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+
+class Program
+{
+    static List<int> P;
+    static List<int> Q;
+    static List<int> A;
+    static bool AA(int num)
+    {
+        // ((x ∈ P) ∧ (x ∈ Q)) → (x ∈ A)
+        if (!(P.Contains(num) && Q.Contains(num)) || A.Contains(num))
+        {
+            return true;
+        }
+        return false;
+    }
+    static void Main()
+    {
+        P = new List<int>();
+        Q = new List<int>();
+        A = new List<int>();
+        for (int i=4; i<=15; i++)
+        {
+            P.Add(i);
+        }
+        for (int i = 12; i <= 20; i++)
+        {
+            Q.Add(i);
+        }
+        
+
+        for (int x = -1000; x < 1000; x++)
+        {
+            if (!AA(x))
+            {
+                A.Add(x);
+                Console.WriteLine(x);
+            }
+        }
+        Console.WriteLine(A.Count-1);
+    }
+
+    
+}

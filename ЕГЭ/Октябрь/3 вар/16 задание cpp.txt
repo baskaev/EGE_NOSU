@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+using namespace std;
+
+int F(int num) {
+	if (num == 1) {
+		return 1;
+	}
+	else if(num>1){
+		return F(num - 1) + num;
+	}
+}
+
+int main() {
+	cout << F(30);
+}

@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+using namespace std;
+//перевод в бинарный вид 
+string bin(int num) {
+	string s = "";
+	while (num > 0) {
+		s = to_string(num % 2) + s;
+		num /= 2;
+	}
+	return s;
+}
+// возведение в степень
+int ToThePower(int n, int power) {
+	int num = 1;
+	while (power > 0) {
+		num *= n;
+		power--;
+	}
+	return num;
+}
+// перевод в инт
+int binToInt(string s) {
+	int num = 0;
+	for (int i = s.length() - 1; i >= 0; i--) {
+		if (s[i] == '1') {
+			int power = s.length()-i-1;
+			num += ToThePower(2, power);
+		}
+	}
+	return num;
+}
+int main() {
+	for (int i = 10; i < 1001; i++) {
+		string b = bin(i);
+		b[0] = '0';
+		cout << i - binToInt(b) << endl;
+	}
+}

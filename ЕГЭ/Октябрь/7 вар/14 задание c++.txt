@@ -1,0 +1,14 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+using namespace std;
+
+int main() {
+	int sum = 0;
+	for (int x = 0; x < 14; x++) {
+		if ((2758 * x + 366218) % 24 == 0) {
+			cout << (2758 * x + 366218) / 24 << endl;
+		}
+	}
+}

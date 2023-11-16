@@ -1,0 +1,14 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+using namespace std;
+
+int main() {
+	int sum = 0;
+	for (int x = 0; x < 12; x++) {
+		if ((30*x + 30247) % 133 == 0) {
+			cout << (30 * x + 30247) / 133 << endl;
+		}
+	}
+}

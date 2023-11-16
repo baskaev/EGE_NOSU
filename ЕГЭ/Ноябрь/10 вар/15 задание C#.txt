@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+
+
+class Program
+{
+    static bool AA(int A)
+    {
+        for (int x=0; x<1000; x++)
+        {
+            if (
+            !((x & 28) == 0 && (x & 45) == 0 || (x & 17) != 0 || (x & A) != 0)
+            )
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    static void Main()
+    {
+
+
+
+        for (int x = 0; x < 1000; x++)
+        {
+            if (AA(x))
+            {
+                Console.WriteLine(x);
+                break;
+            }
+        }
+    }
+
+    
+}

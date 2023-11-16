@@ -1,0 +1,85 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Instrumentation;
+using System.Runtime.CompilerServices;
+using System.IO;
+using System.Collections.Specialized;
+
+class Program
+{
+    static void Main()
+    {
+        for (int s=1; s<=58; s++)
+        {
+            int a = 10;
+            int b = s;
+
+            // a++
+            a++;
+            bool b1 = false;
+            if (
+                 (a + 1) + b >= 69 ||
+                 a + (b + 1) >= 69 ||
+                 a * 2 + b >= 69 ||
+                 a + b * 3 >= 69
+                 )
+            {
+                b1 = true;
+            }
+            a--;
+
+            // b++
+            b++;
+            bool b2 = false;
+            if (
+                 (a + 1) + b >= 69 ||
+                 a + (b + 1) >= 69 ||
+                 a * 2 + b >= 69 ||
+                 a + b * 3 >= 69
+                 )
+            {
+                b2 = true;
+            }
+            b--;
+
+            // a*2
+            a *= 2;
+            bool b3 = false;
+            if (
+                 (a + 1) + b >= 69 ||
+                 a + (b + 1) >= 69 ||
+                 a * 2 + b >= 69 ||
+                 a + b * 3 >= 69
+                 )
+            {
+                b3 = true;
+            }
+            a /= 2;
+
+            // b*3
+            b *= 3;
+            bool b4 = false;
+            if (
+                 (a + 1) + b >= 69 ||
+                 a + (b + 1) >= 69 ||
+                 a * 2 + b >= 69 ||
+                 a + b * 3 >= 69
+                 )
+            {
+                b4 = true;
+            }
+            b /= 3;
+
+            if (b1 || b2 || b3 || b4)
+            {
+                Console.WriteLine(s);
+                break;
+            }
+            //Console.Write($"{s} {b1} {b2} {b3} {b4} ");
+            //Console.WriteLine();
+        }
+        
+    }
+}

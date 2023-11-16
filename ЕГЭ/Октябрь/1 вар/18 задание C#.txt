@@ -1,0 +1,79 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Instrumentation;
+using System.Runtime.CompilerServices;
+using System.IO;
+
+class Program
+{
+    static int Maxx(int x, int y, int z)
+    {
+        return new[]{ x, y, z }.Max();
+    }
+    static void Main()
+    {
+        List<string[]> list = new List<string[]>();
+        string path = "18.csv";
+        StreamReader read= new StreamReader(path);
+        string line = read.ReadLine();
+        while (line != null)
+        {
+            list.Add(line.Split(';'));
+            line = read.ReadLine();
+        }
+
+        int[,] nums = new int[15,15];
+        for (int i=0; i<15; i++)
+        {
+            for (int j=0; j<15; j++)
+            {
+                nums[i, j] = Convert.ToInt32(list[i][j]);
+            }
+        }
+
+        //*********
+        //        *
+        //        *
+        //        *
+        //        *
+        int[,] maxis = new int[15,15];
+        maxis[0, 14] = nums[0, 14];
+        for (int j=13; j>=0; j--)
+        {
+            maxis[0, j] = nums[0, j] + maxis[0, j + 1];
+        }
+
+        for (int i=1; i<14; i++)
+        {
+            maxis[i, 14] = nums[i, 14] + maxis[i-1, 14];
+        }
+
+        //aaaaaaa
+        //******a
+        //******a
+        //******a
+        for (int i = 1; i < 15; i++)
+        {
+            for (int j = 13; j >= 0; j--)
+            {
+                maxis[i, j] = Maxx(maxis[i-1, j], maxis[i-1, j+1], maxis[i, j+1]) + nums[i, j];
+
+            }
+        }
+
+        //for (int i=0; i<15; i++)
+        //{
+        //    for (int j =0;  j<15; j++)
+        //    {
+        //        Console.Write($"{maxis[i,j]} ");
+        //    }
+        //    Console.WriteLine();
+        //}
+
+        Console.WriteLine(maxis[14, 0]);
+
+
+    }
+}

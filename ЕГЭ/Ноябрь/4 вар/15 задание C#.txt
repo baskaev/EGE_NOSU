@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+
+class Program
+{
+    static bool AA(int A)
+    {
+        // ((x < A) → (x2 < 100)) ∧ ((y2 ≤ 64) → (y ≤ A))
+        for (int x =0; x<1000; x++)
+        {
+            for (int y =0; y<1000; y++)
+            {
+                if (!( ((x>=A) || (x*x)<100) && ( y*y > 64 || y<=A )))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    static void Main()
+    {
+        for (int A = -1000; A < 1000; A++)
+        {
+            if (AA(A))
+            {
+                Console.WriteLine(A);
+            }
+        }
+    }
+
+    
+}

@@ -1,0 +1,51 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Instrumentation;
+using System.Runtime.CompilerServices;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string[] s;
+        string path = "17.txt";
+        string[] lines = File.ReadAllLines(path);
+        int[] nums = new int[lines.Length];
+        for (int i=0; i< nums.Length; i++)
+        {
+            nums[i] = int.Parse(lines[i]);
+        }
+
+        // среднее арифметическое всех четных
+        int median = 0; 
+        for (int i=0; i< nums.Length; i++)
+        {
+            if (i%2==0)
+            {
+                median += nums[i];
+            }
+        }
+        median = median / (nums.Length/2);
+
+        int count = 0;
+        int max = 0;
+        for (int i=0; i<nums.Length-1; i++) 
+        { 
+            if ((nums[i]%3==0 || nums[i+1] % 3 == 0) && (nums[i]<median || nums[i + 1] < median))
+            {
+                count++;
+                if (max < nums[i] + nums[i + 1])
+                {
+                    max = nums[i] + nums[i + 1];
+                }
+            }
+        }
+        Console.Write(count);
+        Console.Write(" ");
+        Console.Write(max);
+        Console.WriteLine();
+    }
+}

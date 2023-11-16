@@ -1,0 +1,8 @@
+x = '9' * 1000
+while ('999' in x) or ('888' in x):
+    if '888' in x:
+        x=x.replace('888', '9', 1)
+    elif '999'in x:
+        x=x.replace('999', '8', 1)
+
+print(x)

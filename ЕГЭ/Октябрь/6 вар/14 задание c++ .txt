@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+using namespace std;
+
+int main() {
+	int min = INT32_MAX;
+	for (int x = 0; x < 15; x++) {
+		for (int y = 0; y < 15; y++) {
+			int cur = 17 * y + 481 * x + 1049607;
+			if (cur % 56 == 0 && cur<min) {
+				min = cur;
+			}
+		}
+	}
+	cout << min << endl;
+	cout << min / 56;
+}
