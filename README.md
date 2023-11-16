@@ -1,1 +1,1 @@
-# EGE_NOSU
+# EGE_NOSU :)
