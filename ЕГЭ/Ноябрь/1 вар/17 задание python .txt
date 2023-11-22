@@ -1,0 +1,27 @@
+mod7 = []
+All = []
+count = 0
+maxx = 0
+with open("1.txt") as file:
+    lines = file.readlines()
+    for line in lines:
+        if int(line.strip()) % 7 == 0:
+            mod7.append(int(line.strip()))
+        All.append(int(line.strip()))
+# for mod in mod7:
+#     for al in All:
+#         if (mod % 160 != al % 160 and al!=mod):
+#             count += 1
+#             if al+mod > maxx:
+#                 maxx = al+mod
+
+for x in range(len(All)-1):
+    for y in range(x, len(All)-1):
+        if (x==y):
+            continue
+        if (All[x] % 160 != All[y] % 160) and ((All[x]%7 == 0) or (All[y]%7==0)):
+            count += 1
+            if All[x]+All[y] > maxx:
+                maxx = All[x]+All[y]
+print(count)
+print(maxx)

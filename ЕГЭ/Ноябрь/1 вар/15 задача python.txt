@@ -1,0 +1,13 @@
+
+a=[]
+for i in range(-1000, 1000):
+    a.append(i)
+def func(x):
+    if (not (x in a) or x**2 <=81) and (x**2>36 or x in a):
+        return
+    a.remove(x)
+    return
+for i in range(-1000, 1000):
+    func(i)
+print(a)
+print(len(a)-1)

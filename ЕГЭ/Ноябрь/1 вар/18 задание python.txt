@@ -1,0 +1,35 @@
+f = open("18.csv", "r")
+lines = f.readlines()
+nums = []
+for line in lines:
+    line = line.replace(',', '.')
+    nums.append(float(line.strip()))
+def sum(a):
+    s =0
+    for num in a:
+        s+=a
+    return s
+def max(a):
+    s = 0;
+    curs = 0
+    for i in range(len(a)):
+        for j in range(i,len(a)):
+            curs+=a[j]
+        if curs>s:
+            s = curs
+        curs =0
+    return s
+
+maxsum =0
+cur = []
+cur.append(nums[0])
+print(nums[0])
+for i in range(1,len(nums)):
+    if (abs(nums[i]-nums[i-1]) <= 8):
+        cur.append(nums[i])
+    else:
+        if max(cur)>maxsum:
+            maxsum = max(cur)
+        cur.clear()
+        cur.append(nums[i])
+print(maxsum)
