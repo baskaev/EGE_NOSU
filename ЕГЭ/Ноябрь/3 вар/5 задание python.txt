@@ -1,0 +1,11 @@
+
+ans = []
+
+for i in range(100000):
+    s = bin(i)
+    summ = s.count('1')
+    s += str(summ%2)
+    s += str(s.count('1') % 2)
+    ans.append( int(s, 2))
+
+print(ans)

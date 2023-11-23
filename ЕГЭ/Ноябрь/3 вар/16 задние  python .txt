@@ -1,0 +1,7 @@
+
+def func(n):
+    if (n==1 or n ==2):
+        return 1
+    if (n>2):
+        return func(n-2) * (n-1)
+print (func(8))

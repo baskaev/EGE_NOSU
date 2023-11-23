@@ -1,0 +1,8 @@
+f = open("1.txt", "r")
+
+lines = f.readlines()
+cnt = 0;
+for line in lines:
+    if (line.count("A") > line.count("E")):
+        cnt+=1
+print(cnt)

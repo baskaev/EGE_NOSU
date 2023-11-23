@@ -1,0 +1,60 @@
+
+for s in range(69):
+    k1 = 7
+    k2 = s
+    opers = []
+    for i in range(4):
+        opers.clear()
+        k1 = 7
+        k2 = s
+        if (i == 0):
+            k1 += 1
+            opers.append("k1+")
+        if (i ==1):
+            k1*=2
+            opers.append("k1*")
+        if (i ==2):
+            k2+=1
+            opers.append("k2+")
+        if (i ==3):
+            k2*=2
+            opers.append("k2*")
+        if (k1+k2>=77):
+            print(opers)
+            continue
+        for j in range(4):
+            if (j ==0):
+                k1 += 1
+                opers.append("k1+")
+                if (k1 + k2 >= 77):
+                    print(opers)
+                opers = opers[:-1]
+                k1-=1
+                continue
+            if (j ==1):
+                k1 *= 2
+                opers.append("k1*")
+                if (k1 + k2 >= 77):
+                    print(opers)
+                opers = opers[:-1]
+                k1/=2
+                continue
+            if (j ==2):
+                k2 += 1
+                opers.append("k2+")
+                if (k1 + k2 >= 77):
+                    print(opers)
+                opers = opers[:-1]
+                k2-=1
+                continue
+            if (j ==3):
+                k2 *= 2
+                opers.append("k2*")
+                if (k1 + k2 >= 77):
+                    print(opers)
+                opers = opers[:-1]
+                k2 /=2
+                continue
+
+    print(s)
+    print()

@@ -1,0 +1,43 @@
+f = open("18_demo.csv", "r")
+lines = f.readlines()
+nums = []
+for i in range(len(lines)):
+    row = []
+    for j in range(len(lines[0].split(';'))):
+        row.append(0)
+    nums.append(row)
+
+for i in range(len(lines)):
+    tmp = lines[i].split(';')
+    for j in range(len(tmp)):
+        nums[i][j]=int(tmp[j].strip())
+moneys = []
+def func(i, j, cursum):
+    if (i==0 and j==9):
+        cursum += nums[i][j]
+        moneys.append(cursum)
+        return 0
+    if (i<0 or j>9):
+        return 0
+    cursum+=nums[i][j]
+    func(i-1, j, cursum)
+    func(i, j+1, cursum)
+    return 0
+
+#print(nums)
+#print(nums[0][9])
+func(9, 0, 0)
+#print(moneys)
+#print()
+minn = moneys[0]
+for m in moneys:
+    if m<minn:
+        minn = m
+
+maxx = moneys[0]
+for m in moneys:
+    if m>maxx:
+        maxx = m
+
+print(maxx)
+print(minn)

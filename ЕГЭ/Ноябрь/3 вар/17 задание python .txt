@@ -1,0 +1,18 @@
+
+f = open("17.txt", "r")
+lines = f.readlines()
+nums = []
+for line in lines:
+    nums.append(int(line.strip()))
+cnt =0
+max = 0;
+
+for i in range (len(nums)-1):
+    for j in range(i+1, len(nums)):
+        if ((nums[i]-nums[j])%2==0) and (nums[i]%31==0 or nums[j]%31 == 0):
+            cnt+=1
+            if (nums[i] + nums[j]) >max:
+                max = nums[i] + nums[j]
+
+print(cnt)
+print(max)
