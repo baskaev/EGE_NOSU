@@ -1,0 +1,12 @@
+#(y + 2x < A) ∨ (x > 30) ∨ (y > 20)
+
+def f(A):
+    for x in range(1000):
+        for y in range(1000):
+            if not((y + 2*x)<A or (x>30) or (y>20)):
+                return 0
+    return 1
+for A in range(1000):
+    if f(A):
+        print(A)
+        break

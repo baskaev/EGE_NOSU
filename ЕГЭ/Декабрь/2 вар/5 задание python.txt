@@ -1,0 +1,12 @@
+def f(n):
+    #1
+    s = bin(n)[2:]
+    #2a
+    s = s + str(s.count('1')%2)
+    #2б
+    s = s + str(s.count('1') % 2)
+    return int(s, 2)
+for i in range (1000):
+    if (f(i)>97):
+        print(i)
+        break

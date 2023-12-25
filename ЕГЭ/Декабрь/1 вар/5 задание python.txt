@@ -1,0 +1,7 @@
+def func(n):
+    s = bin(255-n)[2:]
+    s = (8-len(s))*'0' + s
+    return (int(s,2) - n)
+for i in range(256):
+    if func(i) == 111:
+        print(i)

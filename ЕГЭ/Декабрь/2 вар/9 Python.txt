@@ -1,0 +1,37 @@
+f = open("9.csv", "r")
+lines = f.readlines()
+nums = []
+for line in lines:
+    a = []
+    row = line.split(';')
+    for i in range(6):
+        a.append(int(row[i]))
+    nums.append(a)
+
+anscnt=0
+
+for i in range(len(nums)):
+    flag = 0
+    I2 = -1
+    for j in range(len(nums[i])):
+        cnt = 0
+        for z in range(len(nums[i])):
+            if nums[i][z] == nums[i][j]:
+                cnt+=1
+        if cnt > 2:
+            break
+        if flag and cnt > 1 and nums[i][j]!=I2:
+            break
+        if cnt == 2:
+            flag = 1
+            I2 = nums[i][j]
+        if j==5:
+            sum =0
+            for num in nums[i]:
+                if num!=I2:
+                    sum+=num
+            if (sum/4 <= (I2 + I2)):
+                anscnt+=1
+print(anscnt)
+
+

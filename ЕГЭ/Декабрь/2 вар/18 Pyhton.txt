@@ -1,0 +1,17 @@
+f = open("inf_22_10_20_18.csv", "r")
+lines = f.readlines()
+nums = []
+for line in lines:
+    nums.append(float(line.strip().replace(',','.')))
+
+maxsum = 0
+cursum = 0
+for i in range(1,len(nums)):
+    cursum = nums[i]
+    for j in range(i, len(nums)):
+        if (nums[j] < nums[j-1]):
+            cursum+=nums[j]
+        else:
+            break
+    maxsum = max(cursum, maxsum)
+print(maxsum)

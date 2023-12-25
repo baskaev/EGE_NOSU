@@ -1,0 +1,10 @@
+def func(A):
+    for x in range(1000):
+        for y in range(1000):
+            if not(((x<A)<=(x*x<100)) and ((y*y<=64)<=(y<=A))):
+                return 0
+    return 1
+
+for A in range(-1000, 1000):
+    if func(A):
+        print(A)

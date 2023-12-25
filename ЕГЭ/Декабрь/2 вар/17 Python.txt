@@ -1,0 +1,14 @@
+All = []
+count = 0
+maxx = 0
+with open("17 (4).txt") as file:
+    lines = file.readlines()
+    for line in lines:
+        All.append(int(line.strip()))
+for x in range(len(All)-1):
+    for y in range(x+1, len(All)):
+        if (All[x] * All[y]) % 10==0:
+            count += 1
+            maxx = max(maxx,All[x] + All[y])
+print(count)
+print(maxx)
